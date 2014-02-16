@@ -1,4 +1,4 @@
-Mac OS X dogecoind build instructions
+Mac OS X testcoind build instructions
 ====================================
 
 Authors
@@ -27,7 +27,7 @@ Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.
 Notes
 -----
 
-See `doc/readme-qt.rst` for instructions on building Dogecoin-Qt, the
+See `doc/readme-qt.rst` for instructions on building testcoin-Qt, the
 graphical user interface.
 
 Tested on OS X 10.6 through 10.9 on Intel processors only. PPC is not
@@ -36,7 +36,7 @@ supported because it is big-endian.
 All of the commands should be executed in a Terminal application. The
 built-in one is located in `/Applications/Utilities`.
 
-Much of this may be outdated for Dogecoin.
+Much of this may be outdated for testcoin.
 
 Preparation
 -----------
@@ -75,14 +75,14 @@ Installing the dependencies using MacPorts is very straightforward.
 
     sudo port install boost db48@+no_java openssl miniupnpc
 
-### Building `dogecoind`
+### Building `testcoind`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:dogecoin-project/dogecoin.git dogecoin
-        cd dogecoin
+        git clone git@github.com:testcoin-project/testcoin.git testcoin
+        cd testcoin
 
-2.  Build dogecoind:
+2.  Build testcoind:
 
         cd src
         make -f makefile.osx
@@ -110,7 +110,7 @@ If not, you can ensure that the Brew OpenSSL is correctly linked by running
 
 Rerunning "openssl version" should now return the correct version.
 
-For boost in dogecoin, there are some ‘fun’ things you have to do:
+For boost in testcoin, there are some ‘fun’ things you have to do:
 
  * download boost from source
 
@@ -120,14 +120,14 @@ For boost in dogecoin, there are some ‘fun’ things you have to do:
  * link the statics to /usr/local/lib/
  * make sure the headers for boost are in /usr/local/include/boost or linked from there.
 
-### Building `dogecoind`
+### Building `testcoind`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:dogecoin/dogecoin.git dogecoin
-        cd dogecoin
+        git clone git@github.com:testcoin/testcoin.git testcoin
+        cd testcoin
 
-2.  Build dogecoind:
+2.  Build testcoind:
 
         cd src
         make -f makefile.osx
@@ -144,20 +144,20 @@ Creating a release build
 Running
 -------
 
-It's now available at `./dogecoind`, provided that you are still in the `src`
+It's now available at `./testcoind`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./dogecoind` to get the filename where it should be put, or just try these
+Run `./testcoind` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=dogecoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/dogecoin/dogecoin.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/dogecoin/dogecoin.conf"
+    echo -e "rpcuser=testcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/testcoin/testcoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/testcoin/testcoin.conf"
 
 When next you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours.
 
 Other commands:
 
-    ./dogecoind --help  # for a list of command-line options.
-    ./dogecoind -daemon # to start the dogecoin daemon.
-    ./dogecoind help    # When the daemon is running, to get a list of RPC commands
+    ./testcoind --help  # for a list of command-line options.
+    ./testcoind -daemon # to start the testcoin daemon.
+    ./testcoind help    # When the daemon is running, to get a list of RPC commands
